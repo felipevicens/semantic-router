@@ -84,11 +84,25 @@ var DefaultModelRegistry = []ModelSpec{
 		Tags:             []string{"pii", "privacy", "lora", "token-classification", "bert"},
 	},
 
-	// PII Detection - ModernBERT (Token-level)
+	// PII Detection - ModernBERT (detector)
 	{
 		LocalPath:        "models/mom-mmbert-pii-detector",
 		RepoID:           "llm-semantic-router/mmbert-pii-detector-merged",
-		Aliases:          []string{"mmbert-pii-detector", "mmbert-pii-detector-merged", "pii_classifier_modernbert-base_presidio_token_model", "pii_classifier_modernbert-base_model", "pii_classifier_modernbert_model", "pii_classifier_modernbert_ai4privacy_token_model"},
+		Aliases:          []string{"mmbert-pii-detector", "mmbert-pii-detector-merged"},
+		Purpose:          PurposePIIDetection,
+		Description:      "ModernBERT-based merged PII detector for token-level classification",
+		ParameterSize:    "149M",
+		UsesLoRA:         false,
+		NumClasses:       35, // PII types
+		MaxContextLength: 8192,
+		Tags:             []string{"pii", "privacy", "modernbert", "token-classification", "merged"},
+	},
+
+	// PII Detection - ModernBERT (Token-level)
+	{
+		LocalPath:        "models/pii_classifier_modernbert-base_presidio_token_model",
+		RepoID:           "llm-semantic-router/pii_classifier_modernbert-base_presidio_token_model",
+		Aliases:          []string{"pii_classifier_modernbert-base_presidio_token_model", "pii_classifier_modernbert-base_model", "pii_classifier_modernbert_model", "pii_classifier_modernbert_ai4privacy_token_model"},
 		Purpose:          PurposePIIDetection,
 		Description:      "ModernBERT-based merged PII detector for token-level classification",
 		ParameterSize:    "149M",
